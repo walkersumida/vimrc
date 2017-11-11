@@ -29,7 +29,8 @@ set guioptions-=L
 
 " Colorscheme
 set background=dark
-colorscheme peaksea
+let g:solarized_termcolors=256
+colorscheme solarized
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,6 +117,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --smart-case'
 endif
+
+let g:ack_qhandler = "botright copen 20"
 
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
