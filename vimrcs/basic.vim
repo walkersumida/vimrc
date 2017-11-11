@@ -65,12 +65,33 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+" Show line number
+" :set number  " Vim operation is very slow
+
+" Cursor
+set cursorline
+highlight Cursorline cterm=bold
+
+noremap j gj
+noremap k gk
+noremap <Down> gj
+noremap <Up>   gk
+
+" Clipboard
+set clipboard+=unnamed
+
+" Use twice the width of ASCII characters
+" set ambiwidth=double
+
+" Delete selected value(not cut)
+vnoremap <leader>d "_d
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 0 lines to the cursor - when moving vertically using j/k
+set so=0
 
 " Avoid garbled characters in Chinese language windows OS
 let $LANG='en' 
@@ -396,3 +417,26 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
+""""""""""""""""""""""""""""""
+" => Window
+""""""""""""""""""""""""""""""
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+
+
+""""""""""""""""""""""""""""""
+" => keybinds
+""""""""""""""""""""""""""""""
+inoremap <C-p> <C-c>gka
+inoremap <C-n> <C-c>gja
+noremap! <C-b> <Left>
+noremap! <C-f> <Right>
+noremap! <C-e> <End>
+noremap! <C-a> <Home>
+noremap! <C-d> <Del>
+" inoremap <C-Hyphen> <C-o>u
+inoremap <C-l> <C-o>zz
+noremap! <C-k> <c-o>D
+noremap! <C-y> <C-r>"
