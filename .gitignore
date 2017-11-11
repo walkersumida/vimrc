@@ -4,6 +4,13 @@ temp_dirs/yankring_history_v2.txt
 sources_forked/yankring/doc/tags
 sources_non_forked/tlib/doc/tags
 sources_non_forked/ctrlp.vim/doc/tags*
+sources_non_forked/ale/test
+sources_non_forked/ale/doc
+sources_non_forked/neocomplcache-rsense.vim/doc
+sources_non_forked/neocomplcache.vim/doc
+sources_non_forked/vdebug/tests
+sources_non_forked/vim-markdown/test
+sources_non_forked/vim-orgmode/tests
 my_plugins/
 my_configs.vim
 tags
