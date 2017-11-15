@@ -75,7 +75,14 @@ au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 """"""""""""""""""""""""""""""
 au Filetype html setlocal ts=2 sts=2 sw=2
 
+
 """"""""""""""""""""""""""""""
 " => Scss section
 """"""""""""""""""""""""""""""
 au Filetype scss setlocal ts=2 sts=2 sw=2
+
+
+""""""""""""""""""""""""""""""
+" => Yaml section
+""""""""""""""""""""""""""""""
+au Filetype yaml setlocal ts=2 sts=2 sw=2
