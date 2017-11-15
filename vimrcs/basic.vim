@@ -440,3 +440,4 @@ noremap! <C-d> <Del>
 inoremap <C-l> <C-o>zz
 noremap! <C-k> <c-o>D
 noremap! <C-y> <C-r>"
+nnoremap <C-l> zz
