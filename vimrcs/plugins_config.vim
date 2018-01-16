@@ -169,8 +169,9 @@ let g:ale_fixers = {
 
 " Javascript
 " npm install -g jshint
+" npm install -g eslint
 let g:ale_fixers = {
-\   'javascript': ['jshint'],
+\   'javascript': ['jshint', 'eslint'],
 \}
 
 " Ruby
@@ -189,7 +190,7 @@ let g:ale_fixers = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=0
+let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 
