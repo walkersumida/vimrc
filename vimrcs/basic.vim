@@ -441,3 +441,9 @@ noremap! <C-d> <Del>
 inoremap <C-l> <C-o>zz
 noremap! <C-k> <c-o>D
 noremap! <C-y> <C-r>"
+
+
+""""""""""""""""""""""""""""""
+" => path
+""""""""""""""""""""""""""""""
+let $PYTHONPATH = $HOME."/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages:".$PYTHONPATH

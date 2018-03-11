@@ -85,6 +85,7 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack): Maintains a history of previous yanks, changes and deletes
 Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
 * [neocomplcache-rsense](https://github.com/Shougo/neocomplcache-rsense.vim): Ruby auto complete plugins. Install gem(`gem install rsense`). And, Add rsense path(`which rsense`).
+* [vim-http-client](https://github.com/aquach/vim-http-client): Make HTTP requests from Vim.
 
 ## Included color schemes
 
