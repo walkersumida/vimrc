@@ -86,6 +86,7 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
 * [neocomplcache-rsense](https://github.com/Shougo/neocomplcache-rsense.vim): Ruby auto complete plugins. Install gem(`gem install rsense`). And, Add rsense path(`which rsense`).
 * [vim-http-client](https://github.com/aquach/vim-http-client): Make HTTP requests from Vim.
+* [vim-abolish](https://github.com/tpope/vim-abolish): Search words. And Replace words.
 
 ## Included color schemes
 
