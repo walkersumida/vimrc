@@ -87,6 +87,9 @@ set clipboard+=unnamed
 vnoremap <leader>d "_d
 
 
+nnoremap ; :
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,7 +193,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
