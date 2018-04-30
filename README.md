@@ -76,7 +76,7 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 * [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing `gf`
 * [pathogen.vim](https://github.com/tpope/vim-pathogen): Manage your vim runtimepath 
 * [snipmate.vim](https://github.com/garbas/vim-snipmate): snipmate.vim aims to be a concise vim script that implements some of TextMate's snippets features in Vim
-* [syntastic](https://github.com/scrooloose/syntastic): Syntax checking hacks for vim
+* [ale](https://github.com/w0rp/ale): Syntax checking hacks for vim
 * [vim-commentary](https://github.com/tpope/vim-commentary): Comment stuff out.  Use `gcc` to comment out a line (takes a count), `gc` to comment out the target of a motion. `gcu` uncomments a set of adjacent commented lines.
 * [vim-expand-region](https://github.com/terryma/vim-expand-region): Allows you to visually select increasingly larger regions of text using the same key combination
 * [vim-fugitive](https://github.com/tpope/vim-fugitive): A Git wrapper so awesome, it should be illegal
@@ -84,7 +84,9 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): Sublime Text style multiple selections for Vim, CTRL+N is remapped to CTRL+S (due to YankRing)
 * [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack): Maintains a history of previous yanks, changes and deletes
 Remove all clutter and focus only on the essential. Similar to iA Writer or Write Room [Read more here](http://amix.dk/blog/post/19744)
-
+* [neocomplcache-rsense](https://github.com/Shougo/neocomplcache-rsense.vim): Ruby auto complete plugins. Install gem(`gem install rsense`). And, Add rsense path(`which rsense`).
+* [vim-http-client](https://github.com/aquach/vim-http-client): Make HTTP requests from Vim.
+* [vim-abolish](https://github.com/tpope/vim-abolish): Search words. And Replace words.
 
 ## Included color schemes
 
@@ -100,7 +102,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
 * [vim-less](https://github.com/groenewege/vim-less)
 * [vim-bundle-mako](https://github.com/sophacles/vim-bundle-mako)
-* [vim-markdown](https://github.com/tpope/vim-markdown)
+* [vim-markdown](https://github.com/plasticboy/vim-markdown)
 * [nginx.vim](https://github.com/vim-scripts/nginx.vim): Highlights configuration files for nginx
 * [vim-go](https://github.com/fatih/vim-go)
 
@@ -307,3 +309,8 @@ Cope mappings:
 Just do following:
 * Remove `~/.vim_runtime`
 * Remove any lines that reference `.vim_runtime` in your `~/.vimrc`
+
+# TODO
+- Can't commit
+	cd ~/.vim_runtime
+	git clone git@github.com:Shougo/neocomplcache-rsense.vim.git sources_non_forked/neocomplcache-rsense
