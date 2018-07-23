@@ -87,6 +87,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [neocomplcache-rsense](https://github.com/Shougo/neocomplcache-rsense.vim): Ruby auto complete plugins. Install gem(`gem install rsense`). And, Add rsense path(`which rsense`).
 * [vim-http-client](https://github.com/aquach/vim-http-client): Make HTTP requests from Vim.
 * [vim-abolish](https://github.com/tpope/vim-abolish): Search words. And Replace words.
+* [winresizer.vim](https://github.com/simeji/winresizer): very simple vim plugin for easy resizing of your vim windows.
 
 ## Included color schemes
 
