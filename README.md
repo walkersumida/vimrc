@@ -88,6 +88,8 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [vim-http-client](https://github.com/aquach/vim-http-client): Make HTTP requests from Vim.
 * [vim-abolish](https://github.com/tpope/vim-abolish): Search words. And Replace words.
 * [winresizer.vim](https://github.com/simeji/winresizer): very simple vim plugin for easy resizing of your vim windows.
+* [vim-tags](https://github.com/szw/vim-tags): The Ctags generator for Vim.
+* [auto-ctags.vim](https://github.com/soramugi/auto-ctags.vim): run the ctags command.
 
 ## Included color schemes
 
@@ -308,6 +310,15 @@ Cope mappings:
     map <leader>n :cn<cr>
     map <leader>p :cp<cr>
 
+## Ctags
+
+Install ctags
+
+    brew install ctags
+
+Create tags file
+
+    :Ctags
 
 ## How to uninstall
 Just do following:
