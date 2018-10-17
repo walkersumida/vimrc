@@ -457,3 +457,11 @@ noremap! <C-y> <C-r>"
 " => path
 """"""""""""""""""""""""""""""
 let $PYTHONPATH = $HOME."/.pyenv/versions/anaconda3-4.2.0/lib/python3.5/site-packages:".$PYTHONPATH
+
+
+""""""""""""""""""""""""""""""
+" => load matchit
+""""""""""""""""""""""""""""""
+if !exists('loaded_matchit')
+  runtime macros/matchit.vim
+endif
