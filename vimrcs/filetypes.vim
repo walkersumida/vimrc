@@ -71,6 +71,13 @@ au BufNewFile,BufRead *.json.jbuilder set ft=ruby
 
 
 """"""""""""""""""""""""""""""
+" => TypeScript section
+""""""""""""""""""""""""""""""
+au Filetype ts setlocal ts=2 sts=2 sw=2
+au BufNewFile,BufRead *.ts set ft=ts
+
+
+""""""""""""""""""""""""""""""
 " => Html section
 """"""""""""""""""""""""""""""
 au Filetype html setlocal ts=2 sts=2 sw=2
