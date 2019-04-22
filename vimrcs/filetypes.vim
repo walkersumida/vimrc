@@ -67,7 +67,7 @@ autocmd BufRead *.twig set syntax=html filetype=html
 " => Ruby section
 """"""""""""""""""""""""""""""
 au Filetype ruby setlocal ts=2 sts=2 sw=2
-au BufNewFile,BufRead *.json.jbuilder set ft=ruby
+au BufNewFile,BufRead *.jbuilder set ft=ruby
 
 
 """"""""""""""""""""""""""""""
