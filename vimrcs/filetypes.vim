@@ -103,3 +103,10 @@ au BufNewFile,BufRead *.slim setlocal filetype=slim
 " => Terraform section
 """"""""""""""""""""""""""""""
 autocmd FileType terraform setlocal commentstring=#%s
+
+""""""""""""""""""""""""""""""
+" => Vue section
+""""""""""""""""""""""""""""""
+autocmd FileType vue syntax sync fromstart
+" autocmd BufRead *.vue set syntax=vue filetype=vue
+au Filetype vue setlocal ts=2 sts=2 sw=2

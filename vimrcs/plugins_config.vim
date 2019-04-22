@@ -174,6 +174,12 @@ let g:ale_fixers = {
 \   'javascript': ['jshint', 'eslint'],
 \}
 
+" Vue
+" npm i -g eslint eslint-plugin-vue
+let g:ale_fixers = {
+\   'vue': ['eslint'],
+\}
+
 " Ruby
 " gem install rubocop
 let g:ale_fixers = {
