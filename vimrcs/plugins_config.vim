@@ -251,3 +251,12 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 let g:rsenseHome = expand("~/.rbenv/shims/rsense")
 let g:rsenseUseOmniFunc = 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-over
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" exec over.vim
+nnoremap <silent> <Leader>m :OverCommandLine<CR>
+
+nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/<C-r><C-w>//gc<Left><Left><Left>
