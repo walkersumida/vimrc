@@ -407,9 +407,7 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
-    emenu Foo.Bar
-    unmenu Foo
+    call feedkeys(":" . a:str)
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
