@@ -90,6 +90,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [winresizer.vim](https://github.com/simeji/winresizer): very simple vim plugin for easy resizing of your vim windows.
 * [vim-tags](https://github.com/szw/vim-tags): The Ctags generator for Vim.
 * [auto-ctags.vim](https://github.com/soramugi/auto-ctags.vim): run the ctags command.
+* [vim-localvimrc](https://github.com/embear/vim-localvimrc): Search local vimrc files (".lvimrc") in the tree (root dir up to current dir) and load them.
 
 ## Included color schemes
 
