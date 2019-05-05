@@ -3,26 +3,35 @@
 
 " Set to change the ruleset
 let g:ale_php_phpstan_executable = get(g:, 'ale_php_phpstan_executable', 'phpstan')
-let g:ale_php_phpstan_level = get(g:, 'ale_php_phpstan_level', '4')
+let g:ale_php_phpstan_level = get(g:, 'ale_php_phpstan_level', '')
 let g:ale_php_phpstan_configuration = get(g:, 'ale_php_phpstan_configuration', '')
 
-function! ale_linters#php#phpstan#GetExecutable(buffer) abort
-    return ale#Var(a:buffer, 'php_phpstan_executable')
-endfunction
-
-function! ale_linters#php#phpstan#GetCommand(buffer) abort
-    let l:executable = ale_linters#php#phpstan#GetExecutable(a:buffer)
-
+function! ale_linters#php#phpstan#GetCommand(buffer, version) abort
     let l:configuration = ale#Var(a:buffer, 'php_phpstan_configuration')
     let l:configuration_option = !empty(l:configuration)
     \   ? ' -c ' . l:configuration
     \   : ''
 
-    return ale#Escape(l:executable)
-    \   . ' analyze -l'
-    \   . ale#Var(a:buffer, 'php_phpstan_level')
-    \   . ' --errorFormat raw'
+    let l:level =  ale#Var(a:buffer, 'php_phpstan_level')
+    let l:config_file_exists = ale#path#FindNearestFile(a:buffer, 'phpstan.neon')
+
+    if empty(l:level) && empty(l:config_file_exists)
+        " if no configuration file is found, then use 4 as a default level
+        let l:level = '4'
+    endif
+
+    let l:level_option = !empty(l:level)
+    \   ? ' -l ' . l:level
+    \   : ''
+
+    let l:error_format = ale#semver#GTE(a:version, [0, 10, 3])
+    \   ? ' --error-format raw'
+    \   : ' --errorFormat raw'
+
+    return '%e analyze --no-progress'
+    \   . l:error_format
     \   . l:configuration_option
+    \   . l:level_option
     \   . ' %s'
 endfunction
 
@@ -38,7 +47,7 @@ function! ale_linters#php#phpstan#Handle(buffer, lines) abort
         call add(l:output, {
         \   'lnum': l:match[2] + 0,
         \   'text': l:match[3],
-        \   'type': 'W',
+        \   'type': 'E',
         \})
     endfor
 
@@ -47,7 +56,12 @@ endfunction
 
 call ale#linter#Define('php', {
 \   'name': 'phpstan',
-\   'executable_callback': 'ale_linters#php#phpstan#GetExecutable',
-\   'command_callback': 'ale_linters#php#phpstan#GetCommand',
+\   'executable': {b -> ale#Var(b, 'php_phpstan_executable')},
+\   'command': {buffer -> ale#semver#RunWithVersionCheck(
+\       buffer,
+\       ale#Var(buffer, 'php_phpstan_executable'),
+\       '%e --version',
+\       function('ale_linters#php#phpstan#GetCommand'),
+\   )},
 \   'callback': 'ale_linters#php#phpstan#Handle',
 \})

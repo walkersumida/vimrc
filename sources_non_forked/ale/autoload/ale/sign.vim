@@ -2,6 +2,25 @@ scriptencoding utf8
 " Author: w0rp <devw0rp@gmail.com>
 " Description: Draws error and warning signs into signcolumn
 
+" This flag can be set to some integer to control the maximum number of signs
+" that ALE will set.
+let g:ale_max_signs = get(g:, 'ale_max_signs', -1)
+" This flag can be set to 1 to enable changing the sign column colors when
+" there are errors.
+let g:ale_change_sign_column_color = get(g:, 'ale_change_sign_column_color', 0)
+" These variables dictate what signs are used to indicate errors and warnings.
+let g:ale_sign_error = get(g:, 'ale_sign_error', '>>')
+let g:ale_sign_style_error = get(g:, 'ale_sign_style_error', g:ale_sign_error)
+let g:ale_sign_warning = get(g:, 'ale_sign_warning', '--')
+let g:ale_sign_style_warning = get(g:, 'ale_sign_style_warning', g:ale_sign_warning)
+let g:ale_sign_info = get(g:, 'ale_sign_info', g:ale_sign_warning)
+" This variable sets an offset which can be set for sign IDs.
+" This ID can be changed depending on what IDs are set for other plugins.
+" The dummy sign will use the ID exactly equal to the offset.
+let g:ale_sign_offset = get(g:, 'ale_sign_offset', 1000000)
+" This flag can be set to 1 to keep sign gutter always open
+let g:ale_sign_column_always = get(g:, 'ale_sign_column_always', 0)
+
 if !hlexists('ALEErrorSign')
     highlight link ALEErrorSign error
 endif
@@ -26,89 +45,72 @@ if !hlexists('ALESignColumnWithErrors')
     highlight link ALESignColumnWithErrors error
 endif
 
+function! ale#sign#SetUpDefaultColumnWithoutErrorsHighlight() abort
+    redir => l:output
+        0verbose silent highlight SignColumn
+    redir end
+
+    let l:highlight_syntax = join(split(l:output)[2:])
+    let l:match = matchlist(l:highlight_syntax, '\vlinks to (.+)$')
+
+    if !empty(l:match)
+        execute 'highlight link ALESignColumnWithoutErrors ' . l:match[1]
+    elseif l:highlight_syntax isnot# 'cleared'
+        execute 'highlight ALESignColumnWithoutErrors ' . l:highlight_syntax
+    endif
+endfunction
+
 if !hlexists('ALESignColumnWithoutErrors')
-    function! s:SetSignColumnWithoutErrorsHighlight() abort
-        redir => l:output
-            silent highlight SignColumn
-        redir end
-
-        let l:highlight_syntax = join(split(l:output)[2:])
-
-        let l:match = matchlist(l:highlight_syntax, '\vlinks to (.+)$')
-
-        if !empty(l:match)
-            execute 'highlight link ALESignColumnWithoutErrors ' . l:match[1]
-        elseif l:highlight_syntax isnot# 'cleared'
-            execute 'highlight ALESignColumnWithoutErrors ' . l:highlight_syntax
-        endif
-    endfunction
-
-    call s:SetSignColumnWithoutErrorsHighlight()
-    delfunction s:SetSignColumnWithoutErrorsHighlight
+    call ale#sign#SetUpDefaultColumnWithoutErrorsHighlight()
 endif
 
+" Spaces and backslashes need to be escaped for signs.
+function! s:EscapeSignText(sign_text) abort
+    return substitute(substitute(a:sign_text, ' *$', '', ''), '\\\| ', '\\\0', 'g')
+endfunction
+
 " Signs show up on the left for error markers.
-execute 'sign define ALEErrorSign text=' . g:ale_sign_error
+execute 'sign define ALEErrorSign text=' . s:EscapeSignText(g:ale_sign_error)
 \   . ' texthl=ALEErrorSign linehl=ALEErrorLine'
-execute 'sign define ALEStyleErrorSign text=' . g:ale_sign_style_error
+execute 'sign define ALEStyleErrorSign text=' .  s:EscapeSignText(g:ale_sign_style_error)
 \   . ' texthl=ALEStyleErrorSign linehl=ALEErrorLine'
-execute 'sign define ALEWarningSign text=' . g:ale_sign_warning
+execute 'sign define ALEWarningSign text=' . s:EscapeSignText(g:ale_sign_warning)
 \   . ' texthl=ALEWarningSign linehl=ALEWarningLine'
-execute 'sign define ALEStyleWarningSign text=' . g:ale_sign_style_warning
+execute 'sign define ALEStyleWarningSign text=' . s:EscapeSignText(g:ale_sign_style_warning)
 \   . ' texthl=ALEStyleWarningSign linehl=ALEWarningLine'
-execute 'sign define ALEInfoSign text=' . g:ale_sign_info
+execute 'sign define ALEInfoSign text=' . s:EscapeSignText(g:ale_sign_info)
 \   . ' texthl=ALEInfoSign linehl=ALEInfoLine'
 sign define ALEDummySign
 
-let s:error_priority = 1
-let s:warning_priority = 2
-let s:info_priority = 3
-let s:style_error_priority = 4
-let s:style_warning_priority = 5
-
 function! ale#sign#GetSignName(sublist) abort
-    let l:priority = s:style_warning_priority
+    let l:priority = g:ale#util#style_warning_priority
 
     " Determine the highest priority item for the line.
     for l:item in a:sublist
-        if l:item.type is# 'I'
-            let l:item_priority = s:info_priority
-        elseif l:item.type is# 'W'
-            if get(l:item, 'sub_type', '') is# 'style'
-                let l:item_priority = s:style_warning_priority
-            else
-                let l:item_priority = s:warning_priority
-            endif
-        else
-            if get(l:item, 'sub_type', '') is# 'style'
-                let l:item_priority = s:style_error_priority
-            else
-                let l:item_priority = s:error_priority
-            endif
-        endif
+        let l:item_priority = ale#util#GetItemPriority(l:item)
 
-        if l:item_priority < l:priority
+        if l:item_priority > l:priority
             let l:priority = l:item_priority
         endif
     endfor
 
-    if l:priority is# s:error_priority
+    if l:priority is# g:ale#util#error_priority
         return 'ALEErrorSign'
     endif
 
-    if l:priority is# s:warning_priority
+    if l:priority is# g:ale#util#warning_priority
         return 'ALEWarningSign'
     endif
 
-    if l:priority is# s:style_error_priority
+    if l:priority is# g:ale#util#style_error_priority
         return 'ALEStyleErrorSign'
     endif
 
-    if l:priority is# s:style_warning_priority
+    if l:priority is# g:ale#util#style_warning_priority
         return 'ALEStyleWarningSign'
     endif
 
-    if l:priority is# s:info_priority
+    if l:priority is# g:ale#util#info_priority
         return 'ALEInfoSign'
     endif
 
@@ -119,7 +121,7 @@ endfunction
 " Read sign data for a buffer to a list of lines.
 function! ale#sign#ReadSigns(buffer) abort
     redir => l:output
-       silent execute 'sign place buffer=' . a:buffer
+        silent execute 'sign place buffer=' . a:buffer
     redir end
 
     return split(l:output, "\n")
@@ -214,7 +216,7 @@ function! s:BuildSignMap(buffer, current_sign_list, grouped_items) abort
 
     if l:max_signs is 0
         let l:selected_grouped_items = []
-    elseif type(l:max_signs) is type(0) && l:max_signs > 0
+    elseif type(l:max_signs) is v:t_number && l:max_signs > 0
         let l:selected_grouped_items = a:grouped_items[:l:max_signs - 1]
     else
         let l:selected_grouped_items = a:grouped_items
