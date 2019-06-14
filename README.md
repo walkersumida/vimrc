@@ -91,6 +91,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [vim-tags](https://github.com/szw/vim-tags): The Ctags generator for Vim.
 * [auto-ctags.vim](https://github.com/soramugi/auto-ctags.vim): run the ctags command.
 * [vim-localvimrc](https://github.com/embear/vim-localvimrc): Search local vimrc files (".lvimrc") in the tree (root dir up to current dir) and load them.
+* [markdown-preview.vim](https://github.com/iamcco/markdown-preview.vim): Using the markdown-preview.vim plugin, you can preview Markdown in real-time with a web browser.
 
 ## Included color schemes
 
