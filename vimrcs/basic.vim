@@ -85,6 +85,8 @@ set clipboard+=unnamed
 
 " Delete selected value(not cut)
 vnoremap <leader>d "_d
+vnoremap x "_x
+nnoremap x "_x
 
 
 nnoremap ; :
