@@ -110,3 +110,9 @@ autocmd FileType terraform setlocal commentstring=#%s
 autocmd FileType vue syntax sync fromstart
 " autocmd BufRead *.vue set syntax=vue filetype=vue
 au Filetype vue setlocal ts=2 sts=2 sw=2
+
+""""""""""""""""""""""""""""""
+" => Dart section
+""""""""""""""""""""""""""""""
+let dart_style_guide = 2
+" au Filetype dart setlocal ts=2 sts=2 sw=2
