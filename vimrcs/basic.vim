@@ -451,6 +451,7 @@ noremap! <C-d> <Del>
 inoremap <C-l> <C-o>zz
 noremap! <C-k> <c-o>D
 noremap! <C-y> <C-r>"
+inoremap <silent> jj <ESC>
 
 
 """"""""""""""""""""""""""""""
