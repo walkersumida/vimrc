@@ -94,6 +94,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [markdown-preview.vim](https://github.com/iamcco/markdown-preview.vim): Using the markdown-preview.vim plugin, you can preview Markdown in real-time with a web browser.
 * [nerdtree-chmod](https://github.com/EvanDotPro/nerdtree-chmod): A plugin for NERDTree that allows for chmod'ing files.
 * [vim-coloresque](https://github.com/gko/vim-coloresque): css/less/sass/html color preview for vim.
+* [vim-markdown-toc](https://github.com/walkersumida/vim-markdown-toc): generate table of contents for Markdown files.
 
 ## Included color schemes
 
