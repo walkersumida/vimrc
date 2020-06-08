@@ -257,3 +257,8 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 let g:rsenseHome = expand("~/.rbenv/shims/rsense")
 let g:rsenseUseOmniFunc = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-ruby-runner
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:RubyRunner_open_below = 1

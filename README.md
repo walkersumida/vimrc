@@ -95,6 +95,7 @@ Remove all clutter and focus only on the essential. Similar to iA Writer or Writ
 * [nerdtree-chmod](https://github.com/EvanDotPro/nerdtree-chmod): A plugin for NERDTree that allows for chmod'ing files.
 * [vim-coloresque](https://github.com/gko/vim-coloresque): css/less/sass/html color preview for vim.
 * [vim-markdown-toc](https://github.com/walkersumida/vim-markdown-toc): generate table of contents for Markdown files.
+* [vim-ruby-runner](https://github.com/henrik/vim-ruby-runner): Vim plugin to execute Ruby into an output buffer.
 
 ## Included color schemes
 
@@ -325,6 +326,10 @@ Install ctags
 Create tags file
 
     :Ctags
+
+## Execute Ruby codes
+
+    <leader>r
 
 ## How to uninstall
 Just do following:
